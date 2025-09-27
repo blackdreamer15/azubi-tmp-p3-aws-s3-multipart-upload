@@ -59,15 +59,27 @@ jobs:
       - name: Install Vercel CLI 🛠️
         run: npm install --global vercel@latest
 
+      - name: Debug Environment 🔍
+        run: |
+          echo "Node version: $(node --version)"
+          echo "pnpm version: $(pnpm --version)"
+          echo "Current directory: $(pwd)"
+          echo "Frontend directory contents:"
+          ls -la ./frontend/
+          echo "pnpm-lock.yaml exists: $(test -f ./frontend/pnpm-lock.yaml && echo 'YES' || echo 'NO')"
+        working-directory: ./
+
       - name: Pull Vercel Environment Information 📥
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: ./frontend
+        shell: bash
 
       - name: Build Project Artifacts 🏗️
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: ./frontend
+        shell: bash
 
       - name: Deploy Project Artifacts to Vercel 🚀
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: ./frontend
-
+        shell: bash
