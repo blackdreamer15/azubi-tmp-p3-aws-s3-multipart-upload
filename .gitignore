@@ -225,3 +225,4 @@ temp_uploads/
 *.p12
 *.pfx
 secrets/
+.vercel
