@@ -89,13 +89,9 @@ resource "aws_s3_bucket_cors_configuration" "file_upload_bucket" {
     allowed_headers = ["*"]
     allowed_methods = ["GET", "PUT", "POST", "DELETE", "HEAD"]
     allowed_origins = [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://localhost:3002",
-      "http://localhost:3003",
       "http://localhost:3004",
-      "http://localhost:5173",
-      "http://localhost:8000"
+      "http://localhost:8000",
+      "https://aws-s3-multipart-upload.vercel.app"
     ]
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
