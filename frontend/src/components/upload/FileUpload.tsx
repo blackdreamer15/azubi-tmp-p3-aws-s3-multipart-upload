@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { Upload, X, File, AlertCircle } from "lucide-react";
+import { Upload, X, File } from "lucide-react";
 import { FileUpload as FileUploadType } from "@/types";
 import { FileUtils, cn } from "@/utils";
 
